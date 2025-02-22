@@ -1,0 +1,363 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>birthdayfella</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      .movie-card {
+        transition: transform 0.3s ease;
+      }
+      .movie-card:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white">
+    <!-- Header -->
+    <header
+      class="flex justify-between items-center p-4 bg-black fixed w-full z-10"
+    >
+      <div class="flex items-center space-x-4">
+        <img
+          alt="Netflix logo in red and white"
+          class="h-8"
+          height="50"
+          src="img/pngwing.png"
+          width="100"
+        />
+        <nav class="hidden md:flex space-x-4">
+          <a class="hover:text-gray-400" href="#"> Home </a>
+          <a class="hover:text-gray-400" href="#"> TV Shows </a>
+          <a class="hover:text-gray-400" href="#"> Movies </a>
+          <a class="hover:text-gray-400" href="#"> New &amp; Popular </a>
+          <a class="hover:text-gray-400" href="#"> My List </a>
+        </nav>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="md:hidden focus:outline-none" id="menu-button">
+          <i class="fas fa-bars text-white"> </i>
+        </button>
+        <i class="fas fa-search hover:text-gray-400"> </i>
+        <i class="fas fa-bell hover:text-gray-400"> </i>
+        <img
+          alt="User profile picture"
+          class="h-8 w-8 rounded-full object-cover w-8 h-8"
+          height="30"
+          src="img/pp1.jpg"
+          width="30"
+        />
+      </div>
+    </header>
+    <!-- Mobile Menu -->
+    <div
+      class="hidden fixed inset-0 bg-black bg-opacity-90 z-20"
+      id="mobile-menu"
+    >
+      <div class="flex justify-end p-4">
+        <button class="focus:outline-none" id="close-menu-button">
+          <i class="fas fa-times text-white text-2xl"> </i>
+        </button>
+      </div>
+      <nav class="flex flex-col items-center space-y-4 mt-8">
+        <a class="hover:text-gray-400 text-xl" href="index.html"> Home </a>
+        <a class="hover:text-gray-400 text-xl" href="#"> TV Shows </a>
+        <a class="hover:text-gray-400 text-xl" href="#"> Movies </a>
+        <a class="hover:text-gray-400 text-xl" href="#"> New &amp; Popular </a>
+        <a class="hover:text-gray-400 text-xl" href="#"> My List </a>
+      </nav>
+    </div>
+    <!-- Main Content -->
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section
+      class="relative min-h-[86vh] bg-cover bg-center"
+      style="background-image: url('img/bb1.jpg')"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"
+        ></div>
+        <div class="absolute bottom-0 p-8">
+          <h1 class="text-5xl font-bold">Fella Kaula Sandrina
+             Birthday</h1>
+          <p class="mt-4 text-lg max-w-xl">
+            Seorang anak spesial angkatan 2004 yang akhirnya hari ini dia resmi berusia 21 tahun😆🎉
+          </p>
+
+          <!-- Card yang akan muncul saat tombol Play diklik -->
+           
+        <div id="playCard" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
+          <div class="bg-gray-900 p-6 rounded-lg shadow-lg text-white max-w-md relative">
+            <button id="closeCard" class="absolute top-0 right-2 text-white text-2xl">&times;</button>
+            <video autoplay muted loop class="w-full rounded-lg">
+              <source src="img/vid1.mp4" type="video/mp4">
+              Browser Anda tidak mendukung tag video.
+            </video>            
+            <h2 class="text-2xl font-bold mt-4">Fella Kaula Sandrina Birthday</h2>
+            <p class="mt-2 text-gray-300">
+              Happy Birthday Fella!!!! 🎉✨ Semoga tahun ini penuh kebahagiaan, kesenangan, dan tawa tanpa henti yaa fell. Stay amazing, stay you! 💖🥳</p>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const playButton = document.getElementById("playButton");
+            const playCard = document.getElementById("playCard");
+            const closeCard = document.getElementById("closeCard");
+
+            playButton.addEventListener("click", function () {
+              playCard.classList.remove("hidden");
+            });
+
+            closeCard.addEventListener("click", function () {
+              playCard.classList.add("hidden");
+            });
+
+            // Tutup card jika klik di luar area card
+            playCard.addEventListener("click", function (event) {
+              if (event.target === playCard) {
+                playCard.classList.add("hidden");
+              }
+            });
+          });
+        </script>
+
+
+        <div class="mt-4 flex space-x-4">
+          <button id="playButton"
+              class="bg-white text-black px-4 py-2 rounded flex items-center space-x-2 transform hover:scale-110 transition duration-200">
+              <i class="fas fa-play"></i>
+              <span> Play </span>
+          </button>
+
+            <a href="more.html">
+              <button
+                class="bg-gray-700 text-white px-4 py-2 rounded flex items-center space-x-2 hover:scale-110 transition duration-200"
+              >
+                <i class="fas fa-info-circle"> </i>
+                <span> More Info </span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Rows of Movies/Shows -->
+      <section class="p-8 space-y-8">
+        <!-- Row 1 -->
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Gallery Fella</h2>
+          <div
+            class="flex space-x-4 overflow-auto whitespace-nowrap w-full p-2 no-scrollbar"
+          >
+            <img
+              alt="Top pick movie 1"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 2"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 3"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 4"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 5"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 1"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 2"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div>
+          <div
+            class="flex space-x-4 overflow-auto whitespace-nowrap w-full p-2 no-scrollbar"
+          >
+            <img
+              alt="Top pick movie 1"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 2"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 3"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 4"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 5"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 1"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+            <img
+              alt="Top pick movie 2"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="200"
+            />
+          </div>
+        </div>
+        <!-- Row 3 -->
+        <div>
+          <div
+            class="flex space-x-4 overflow-auto whitespace-nowrap w-full p-2 no-scrollbar"
+          >
+            <img
+              alt="New release movie 1"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+            <img
+              alt="New release movie 2"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+            <img
+              alt="New release movie 3"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+            <img
+              alt="New release movie 4"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+            <img
+              alt="New release movie 5"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+            <img
+              alt="New release movie 1"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+            <img
+              alt="New release movie 2"
+              class="w-48 h-72 object-cover movie-card flex-shrink-0"
+              height="300"
+              src="img/sample1.jpg"
+              width="300"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-75 p-8">
+      <div class="max-w-6xl">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex space-x-4">
+            <a class="text-white hover:text-gray-400" href="#"> Privacy </a>
+            <a class="text-white hover:text-gray-400" href="#"> Terms </a>
+            <a class="text-white hover:text-gray-400" href="#"> Contact Us </a>
+          </div>
+        </div>
+        <p class="text-gray-400">© 010325 by Ramzy. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      const menuButton = document.getElementById("menu-button");
+      const closeMenuButton = document.getElementById("close-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      closeMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>
